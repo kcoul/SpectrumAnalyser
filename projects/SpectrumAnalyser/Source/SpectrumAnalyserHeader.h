@@ -1,15 +1,4 @@
-/*
-  ==============================================================================
-
-    SpectrumAnalyserHeader.h
-    Created: 10 Jun 2014 8:19:00pm
-    Author:  Samuel Gaehwiler
-
-  ==============================================================================
-*/
-
-#ifndef SPECTRUM_ANALYSER_HEADER_H_INCLUDED
-#define SPECTRUM_ANALYSER_HEADER_H_INCLUDED
+#pragma once
 
 // Preprocessor definitions
 // ------------------------
@@ -55,6 +44,3 @@ inline float expTransformInRange0to1 (const float between0and1)
     const float maximum = JUCE_LIVE_CONSTANT (1000.0f);
     return (pow(maximum, between0and1) - minimum) / (maximum - minimum);
 }
-
-
-#endif  // SPECTRUM_ANALYSER_HEADER_H_INCLUDED

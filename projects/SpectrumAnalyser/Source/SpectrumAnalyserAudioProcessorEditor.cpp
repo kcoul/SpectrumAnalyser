@@ -1,16 +1,5 @@
-/*
-  ==============================================================================
-
-    SpectrumAnalyserAudioProcessorEditor.cpp
-    Created: 10 Jun 2014 8:19:00pm
-    Author:  Samuel Gaehwiler
-
-  ==============================================================================
-*/
-
 #include "SpectrumAnalyserAudioProcessor.h"
 #include "SpectrumAnalyserAudioProcessorEditor.h"
-
 
 //==============================================================================
 SpectrumAnalyserAudioProcessorEditor::SpectrumAnalyserAudioProcessorEditor (SpectrumAnalyserAudioProcessor* ownerFilter,
@@ -20,13 +9,13 @@ SpectrumAnalyserAudioProcessorEditor::SpectrumAnalyserAudioProcessorEditor (Spec
     : AudioProcessorEditor (ownerFilter),
       spectrumViewer (repaintSpectrumViewer, spectrumMagnitudeBuffer, detectedFrequency)
 {
-    sampleRate.addListener (this);
+    sampleRateValue.addListener (this);
     // The sampleRate has already been set in the SpectrumAnalyserAudioProcessor
     // before the creation of the SpectrumAnalyserAudioProcessorEditor.
     // Because of this it is important to have the referTo call after the
     // addListener. Only in this order the valueChanged member function
     // will be called implicitly.
-    sampleRate.referTo (getProcessor()->sampleRate);
+    sampleRateValue.referTo (getProcessor()->sampleRate);
     
     header.setText("High Resolution Spectrum Analysis Meter", dontSendNotification);
     Font headerFont = Font (18.0f);
@@ -43,7 +32,8 @@ SpectrumAnalyserAudioProcessorEditor::SpectrumAnalyserAudioProcessorEditor (Spec
     
     // Add the triangular resizer component for the bottom-right of the UI.
     resizeLimits.setMinimumSize(360, 320);
-    addAndMakeVisible (resizer = new ResizableCornerComponent (this, &resizeLimits));
+    resizer = std::make_unique<ResizableCornerComponent>(this, &resizeLimits);
+    addAndMakeVisible (resizer.get());
     
     // The plugin's initial editor size.
     setSize (1000, 500);
@@ -65,19 +55,19 @@ void SpectrumAnalyserAudioProcessorEditor::resized()
     
     spectrumViewer.setBounds (0, header.getHeight(), getWidth(), getHeight() - header.getHeight());
 
-    const int widthForSamWithBubble = 190;
+    const int widthForHoverValueDisplay = 190;
     const int maxHeight = getHeight() - header.getHeight();
     const int height = jmin (140, maxHeight);
-    hoverValueDisplay.setBounds(getWidth() - widthForSamWithBubble, 10, widthForSamWithBubble, height);
+    hoverValueDisplay.setBounds(getWidth() - widthForHoverValueDisplay, 10, widthForHoverValueDisplay, height);
     
     resizer->setBounds (getWidth() - 16, getHeight() - 16, 16, 16);
 }
 
 void SpectrumAnalyserAudioProcessorEditor::valueChanged (Value & value)
 {
-    if (value.refersToSameSourceAs (sampleRate))
+    if (value.refersToSameSourceAs (sampleRateValue))
     {
-        spectrumViewer.setSampleRate (sampleRate.getValue());
+        spectrumViewer.setSampleRate (sampleRateValue.getValue());
     }
 }
 

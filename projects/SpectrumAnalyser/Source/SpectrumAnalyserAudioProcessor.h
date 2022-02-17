@@ -1,15 +1,4 @@
-/*
-  ==============================================================================
-
-    SpectrumAnalyserAudioProcessor.h
-    Created: 10 Jun 2014 8:19:00pm
-    Author:  Samuel Gaehwiler
-
-  ==============================================================================
-*/
-
-#ifndef SPECTRUM_ANALYSER_AUDIO_PROCESSOR_H_INCLUDED
-#define SPECTRUM_ANALYSER_AUDIO_PROCESSOR_H_INCLUDED
+#pragma once
 
 #include "SpectrumAnalyserHeader.h"
 #include "SpectrumProcessor.h"
@@ -74,5 +63,3 @@ private:
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SpectrumAnalyserAudioProcessor)
 };
-
-#endif  // SPECTRUM_ANALYSER_AUDIO_PROCESSOR_H_INCLUDED

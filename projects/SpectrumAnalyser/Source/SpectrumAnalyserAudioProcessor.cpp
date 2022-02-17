@@ -1,13 +1,3 @@
-/*
-  ==============================================================================
-
-    SpectrumAnalyserAudioProcessor.cpp
-    Created: 10 Jun 2014 8:19:00pm
-    Author:  Samuel Gaehwiler
-
-  ==============================================================================
-*/
-
 #include "SpectrumAnalyserAudioProcessor.h"
 #include "SpectrumAnalyserAudioProcessorEditor.h"
 
@@ -144,7 +134,9 @@ void SpectrumAnalyserAudioProcessor::releaseResources()
 
 void SpectrumAnalyserAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& midiMessages)
 {
-    for (int channel = 0; channel < getNumInputChannels(); ++channel)
+    int numInputChannels = getTotalNumInputChannels();
+    
+    for (int channel = 0; channel < numInputChannels; ++channel)
     {
         float* channelData = buffer.getWritePointer (channel);
 
@@ -159,7 +151,7 @@ void SpectrumAnalyserAudioProcessor::processBlock (AudioSampleBuffer& buffer, Mi
     // In case we have more outputs than inputs, we'll clear any output
     // channels that didn't contain input data, (because these aren't
     // guaranteed to be empty - they may contain garbage).
-    for (int i = getNumInputChannels(); i < getNumOutputChannels(); ++i)
+    for (int i = numInputChannels; i < getTotalNumOutputChannels(); ++i)
     {
         buffer.clear (i, 0, buffer.getNumSamples());
     }

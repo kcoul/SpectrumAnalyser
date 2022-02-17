@@ -1,21 +1,7 @@
-/*
-  ==============================================================================
-
-    SpectroscopeViewer.h
-    Created: 27 Jul 2014 2:34:48pm
-    Author:  Samuel Gaehwiler
-
-    Heavily based on the dRowAudio Spectroscope class by David Rowland.
-
-  ==============================================================================
-*/
-
-#ifndef SPECTRUM_VIEWER_H_INCLUDED
-#define SPECTRUM_VIEWER_H_INCLUDED
-
+#pragma once
 #include "SpectrumAnalyserHeader.h"
 
-#if JUCE_MAC || JUCE_IOS || DROWAUDIO_USE_FFTREAL
+//#if JUCE_MAC || JUCE_IOS || DROWAUDIO_USE_FFTREAL
 
 //==============================================================================
 /** Creates a standard Spectroscope.
@@ -67,9 +53,7 @@ public:
 private:
     //==============================================================================
     void createGradientImage();
-    
-    Path get571RecordingStudioPath();
-    
+        
     static const int frequenciesToPlot[];
     static const int numberOfFrequenciesToPlot;
     
@@ -107,12 +91,10 @@ private:
     int heightForFrequencyCaption;
 	
     Image gradientImage;
-    
-    Path path571;
-    
+        
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SpectrumViewer);
 };
 
-#endif  // #if JUCE_MAC || JUCE_IOS || DROWAUDIO_USE_FFTREAL
-#endif  // SPECTRUM_VIEWER_H_INCLUDED
+//#endif  // #if JUCE_MAC || JUCE_IOS || DROWAUDIO_USE_FFTREAL
+

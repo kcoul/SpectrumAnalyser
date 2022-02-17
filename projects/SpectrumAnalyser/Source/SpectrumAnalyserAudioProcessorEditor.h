@@ -1,15 +1,4 @@
-/*
-  ==============================================================================
- 
-    SpectrumAnalyserAudioProcessorEditor.h
-    Created: 10 Jun 2014 8:19:00pm
-    Author:  Samuel Gaehwiler
- 
-  ==============================================================================
- */
-
-#ifndef SPECTRUM_ANALYSER_AUDIO_PROCESSOR_EDITOR_H_INCLUDED
-#define SPECTRUM_ANALYSER_AUDIO_PROCESSOR_EDITOR_H_INCLUDED
+#pragma once
 
 #include "SpectrumAnalyserHeader.h"
 #include "SpectrumAnalyserAudioProcessor.h"
@@ -43,14 +32,11 @@ private:
     SpectrumAnalyserAudioProcessor* getProcessor() const;
     
     SpectrumViewer spectrumViewer;
-    Value sampleRate;
+    Value sampleRateValue;
     Label header;
     HoverValueDisplay hoverValueDisplay;
     
-    ScopedPointer<ResizableCornerComponent> resizer;
+    std::unique_ptr<ResizableCornerComponent> resizer;
     /** Specifies the maximum size of the window. */
     ComponentBoundsConstrainer resizeLimits;
 };
-
-
-#endif  // SPECTRUM_ANALYSER_AUDIO_PROCESSOR_EDITOR_H_INCLUDED

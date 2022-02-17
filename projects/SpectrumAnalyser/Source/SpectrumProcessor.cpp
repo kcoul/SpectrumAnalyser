@@ -1,15 +1,3 @@
-/*
-  ==============================================================================
-
-    SpectroscopeProcessor.cpp
-    Created: 27 Jul 2014 2:34:48pm
-    Author:  Samuel Gaehwiler
- 
-    Heavily based on the dRowAudio Spectroscope class by David Rowland.
-
-  ==============================================================================
-*/
-
 #include "SpectrumProcessor.h"
 
 SpectrumProcessor::SpectrumProcessor (int fftSizeLog2)
@@ -65,7 +53,7 @@ void SpectrumProcessor::process()
 		fftEngine.updateMagnitudesIfBigger();
         
         // find the peak in the FFT.
-        const int nrOfBins = fftEngine.getMagnitudesBuffer().getSize();
+        const int nrOfBins = (const int)fftEngine.getMagnitudesBuffer().getSize();
         if (nrOfBins > 0)
         {
             float* magnitudeBuffer = fftEngine.getMagnitudesBuffer().getData();
