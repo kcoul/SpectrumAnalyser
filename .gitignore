@@ -1,25 +1,53 @@
-# .gitignore
-# ==========
+# Xcode Project
+**/*.xcodeproj/xcuserdata/
+**/*.xcworkspace/xcuserdata/
+**/*.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
+**/*.xcworkspace/xcshareddata/*.xccheckout
+**/*.xcworkspace/xcshareddata/*.xcscmblueprint
+.idea/
 
-# Exclude vim swap files
-*.swp
- 
-# Exclude OS X folder attributes
+# Build
+**/Builds
+**/JuceLibraryCode
+Scripts/build/
+build
+
+
+DerivedData/
+*.ipa
+
+# Other
+*~
 .DS_Store
- 
-# Excluded folders:
-_finalBinaries
+*.swp
+*.save
+._*
+*.bak
 
-# VST SDK
-# vstsdk2.4/pluginterfaces/
-# vstsdk2.4/public.sdk/
+libs/agora
+libs/aec/apple/libs/webrtc
 
-# Exclude user-specific XCode 3 and 4 files
-# *.mode1
-# *.mode1v3
-# *.mode2v3
-# *.perspective
-# *.perspectivev3
-# *.pbxuser
-# *.xcworkspace
-# xcuserdata
+src/android/**/*.aes
+src/android/**/PinPointAPI.h
+src/android/**/PinPointDebugAPI.h
+src/android/**/tensorflow
+src/android/**/curl
+src/android/**/openssl
+src/android/**/*.pem
+
+src/agora_extension/android/**/*.aes
+src/agora_extension/android/**/AgoraRtcKit
+src/agora_extension/android/**/tensorflow
+src/agora_extension/android/**/curl
+src/agora_extension/android/**/openssl
+src/agora_extension/android/**/.cxx
+src/agora_extension/android/**/agoraLibs
+
+#CMake
+build-ios
+cmake-build
+cmake-build-debug
+cmake-build-release
+cmake-build-relwithdebinfo
+_deps
+CMakeFiles
