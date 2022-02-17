@@ -16,12 +16,12 @@
 //==============================================================================
 /*
 */
-class SamWithBubble    : public Component,
+class HoverValueDisplay    : public Component,
                          public Value::Listener
 {
 public:
-    SamWithBubble();
-    ~SamWithBubble();
+    HoverValueDisplay();
+    ~HoverValueDisplay();
 
     void paint (Graphics&);
     void resized();
@@ -30,11 +30,10 @@ public:
     virtual void valueChanged (Value & value) override;
     
 private:
-    Path bubblePath;
     Value frequencyValue;
     Label pitchLabel;
     
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SamWithBubble)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (HoverValueDisplay)
 };
 
 

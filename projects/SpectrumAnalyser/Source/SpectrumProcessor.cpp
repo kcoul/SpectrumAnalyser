@@ -55,6 +55,7 @@ int SpectrumProcessor::useTimeSlice()
 
 void SpectrumProcessor::process()
 {
+    if (circularBuffer.getNumFree() == 0) return;
     jassert (circularBuffer.getNumFree() != 0); // buffer is too small!
     
     while (circularBuffer.getNumAvailable() > fftEngine.getFFTSize())

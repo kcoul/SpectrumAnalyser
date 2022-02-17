@@ -28,18 +28,18 @@ SpectrumAnalyserAudioProcessorEditor::SpectrumAnalyserAudioProcessorEditor (Spec
     // will be called implicitly.
     sampleRate.referTo (getProcessor()->sampleRate);
     
-    header.setText("High Resolution Spectrum Analyse Meter", dontSendNotification);
+    header.setText("High Resolution Spectrum Analysis Meter", dontSendNotification);
     Font headerFont = Font (18.0f);
     header.setFont (headerFont);
     header.setJustificationType(Justification::centred);
     header.setColour (Label::textColourId, Colours::lightgoldenrodyellow);
     header.setColour (Label::backgroundColourId, Colours::black);
     
-    samWithBubble.referToFrequencyValue (spectrumViewer.getFrequencyToDisplay());
+    hoverValueDisplay.referToFrequencyValue (spectrumViewer.getFrequencyToDisplay());
     
     addAndMakeVisible (&header);
     addAndMakeVisible (&spectrumViewer);
-    addAndMakeVisible (&samWithBubble);
+    addAndMakeVisible (&hoverValueDisplay);
     
     // Add the triangular resizer component for the bottom-right of the UI.
     resizeLimits.setMinimumSize(360, 320);
@@ -68,7 +68,7 @@ void SpectrumAnalyserAudioProcessorEditor::resized()
     const int widthForSamWithBubble = 190;
     const int maxHeight = getHeight() - header.getHeight();
     const int height = jmin (140, maxHeight);
-    samWithBubble.setBounds(getWidth() - widthForSamWithBubble, 10, widthForSamWithBubble, height);
+    hoverValueDisplay.setBounds(getWidth() - widthForSamWithBubble, 10, widthForSamWithBubble, height);
     
     resizer->setBounds (getWidth() - 16, getHeight() - 16, 16, 16);
 }

@@ -13,7 +13,7 @@
 
 #include "SpectrumAnalyserHeader.h"
 #include "SpectrumAnalyserAudioProcessor.h"
-#include "SamWithBubble.h"
+#include "HoverValueDisplay.h"
 #include "SpectrumViewer.h"
 
 
@@ -45,7 +45,7 @@ private:
     SpectrumViewer spectrumViewer;
     Value sampleRate;
     Label header;
-    SamWithBubble samWithBubble;
+    HoverValueDisplay hoverValueDisplay;
     
     ScopedPointer<ResizableCornerComponent> resizer;
     /** Specifies the maximum size of the window. */
